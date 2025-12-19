@@ -1,12 +1,20 @@
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
+import { childrenPageMap } from "./r3_servicesmanager/services/[...slug]/page";
 import "nextra-theme-docs/style.css";
+import { Folder, PageMapItem } from "nextra";
 
 export const metadata = {
     // Define your metadata here
     // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 };
+
+const pageMap = [...(await getPageMap())];
+const servicesManagerApiItem = (
+    pageMap.find((value) => value["name"] == "r3_servicesmanager") as Folder<PageMapItem>
+).children.find((value) => value["name"] == "services") as Folder<PageMapItem>;
+servicesManagerApiItem.children = childrenPageMap;
 
 const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>;
 const navbar = (
@@ -36,7 +44,7 @@ export default async function RootLayout({ children }) {
                 <Layout
                     banner={banner}
                     navbar={navbar}
-                    pageMap={await getPageMap()}
+                    pageMap={pageMap}
                     docsRepositoryBase="https://github.com/r3ps4j/r3ps4j.github.io"
                     footer={footer}
                     // ... Your additional layout options

@@ -1,0 +1,10 @@
+import { Cards } from "nextra/components"
+import { services } from "./services";
+
+# Services
+
+<Cards>
+    {services.map((service) => (
+        <Cards.Card key={service.key} icon={<service.icon />} title={service.label} href={`services/${service.key}`} />
+    ))}
+</Cards>
