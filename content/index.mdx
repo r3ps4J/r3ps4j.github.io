@@ -1,3 +1,31 @@
-# Welcome to Nextra
+import { Cards } from "nextra/components";
+import { CoffeeIcon, StoreIcon } from "lucide-react";
 
-Hello, world!
+# Introduction
+
+Welcome to the documentation of r3ps4J's FiveM resources. Please use the sidebar to navigate to the resource you are looking for. If you think this documentation can be improved or have other suggestions, use the links in the right sidebar. It should lead you to the issues page of this documentation where you can put your suggestions (or issues).
+
+## About me
+
+I'm Jasper aka r3ps4J and I'm from the Netherlands. In my free time I like working on FiveM and have been doing so for quite some time now (since 2019). As you can imagine, the amount of abandoned side projects I have is insane. I hold a bachelors degree in Software Engineering and am currently persuing a master's degree in Computer Science. I love working with design patterns, and you'll often see me attempt to transfer some of the techniques I've learned to FiveM/Lua.
+
+If you find my resources helpful and feel like you want to help me out, consider supporting me! It will be massively appreciated as studying is not cheap.
+
+<Cards>
+    <Cards.Card
+        icon={<CoffeeIcon />}
+        title="Support me"
+        href="https://ko-fi.com/r3ps4J"
+        arrow
+        target="_blank"
+        rel="noopener noreferrer"
+    />
+    <Cards.Card
+        icon={<StoreIcon />}
+        title="Tebex"
+        href="https://r3ps4j-fivem.tebex.io"
+        arrow
+        target="_blank"
+        rel="noopener noreferrer"
+    />
+</Cards>
