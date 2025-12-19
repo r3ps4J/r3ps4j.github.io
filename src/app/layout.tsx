@@ -1,10 +1,11 @@
 import "../globals.css";
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
-import { Banner, Head } from "nextra/components";
+import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import { childrenPageMap } from "./r3_servicesmanager/services/[...slug]/page";
 import "nextra-theme-docs/style.css";
 import { Folder, PageMapItem } from "nextra";
+import Image from "next/image";
 
 export const metadata = {
     // Define your metadata here
@@ -17,14 +18,20 @@ const servicesManagerApiItem = (
 ).children.find((value) => value["name"] == "services") as Folder<PageMapItem>;
 servicesManagerApiItem.children = childrenPageMap;
 
-const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>;
+// const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>;
 const navbar = (
     <Navbar
-        logo={<b>Nextra</b>}
-        // ... Your additional navbar options
+        logo={
+            <div className="flex gap-2 items-center">
+                <Image src="/space_rounded_256.png" alt="R3" width={35} height={35} />
+                <b>r3ps4J Docs</b>
+            </div>
+        }
+        projectLink="https://github.com/r3ps4J/r3ps4j.github.io"
+        chatLink="https://discord.gg/CTSsMuyu55"
     />
 );
-const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
+const footer = <Footer>r3ps4J</Footer>;
 
 export default async function RootLayout({ children }) {
     return (
@@ -43,7 +50,7 @@ export default async function RootLayout({ children }) {
             </Head>
             <body>
                 <Layout
-                    banner={banner}
+                    // banner={banner}
                     navbar={navbar}
                     pageMap={pageMap}
                     docsRepositoryBase="https://github.com/r3ps4j/r3ps4j.github.io"
