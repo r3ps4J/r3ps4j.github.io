@@ -21,7 +21,14 @@ const { mdxPages, pageMap: _pageMap } = convertToPageMap({
 // `mergeMetaWithPageMap` is used to change sidebar order and title
 const eslintPageMap = mergeMetaWithPageMap(_pageMap[0]!, {
     services: {
-        items: Object.fromEntries(services.map((service) => [service.key, service.label])),
+        items: Object.fromEntries(
+            services.map((service) => [
+                service.key,
+                <div className="flex gap-2 items-center">
+                    <service.icon size={14} /> {service.label}
+                </div>,
+            ])
+        ),
     },
 });
 
