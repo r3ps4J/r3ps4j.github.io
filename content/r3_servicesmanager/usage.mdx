@@ -1,0 +1,98 @@
+# How to use this?
+Well it's really simple actually. Let me guide you through it.
+
+## Registering a service provider
+You can register a service provider using the `register` export:
+
+```lua
+exports.r3_servicesmanager:register(service, provider, priority, resource)
+```
+
+This will register your provider for the given service with a given priority.
+
+Parameters:
+- service: `string` The service to register.
+- provider: `table` A table of functions implementing the defined interface for the service.
+- priority: [`ServicePriority`](./types#servicepriority) The priority of the provider, it is recommended to use priority `2` and make it configurable for server owners.
+- resource: `string` The resource this provider provides the service for. The provider will be unregistered automatically if this resource stops. Usually you should put `GetCurrentResourceName()` here.
+
+Returns:
+- `nil`
+
+## Loading a service provider
+You can retrieve a service provider using the `load` export:
+
+```lua
+local serviceProvider = exports.r3_servicesmanager:load(service)
+```
+
+This loads the provider directly if one is registered.
+
+Parameters:
+- service: `string` The service to load the provider for.
+
+Returns:
+- `table` The currently registered provider for the service with the highest priority.
+- `nil` If there is no provider registered for the service.
+
+## Retrieving a registration
+If you need more information about a provider, you can retrieve the RegisteredProvider completely using the `getRegistration` export:
+
+```lua
+local registeredProvider = exports.r3_servicesmanager:getRegistration(service)
+```
+
+This way you can check which provider is currently active, and check for which resource it is and what priority it has for instance.
+
+Parameters:
+- service: `string` The service to get the registration for.
+
+Returns:
+- [`RegisteredProvider`](./types#registeredprovider) The full registration of the currently registered provider for the service with the highest priority.
+- `nil` If there is no provider registered for the service.
+
+## Retrieving all registrations for a service
+You can also retrieve all registrations for a specific service using the `getRegistrationsForService` export:
+
+```lua
+local registeredProviders = exports.r3_servicesmanager:getRegistrationsForService(service)
+```
+
+Parameters:
+- service: `string` The service to get the registrations for.
+
+Returns:
+- `RegisteredProvider[]` A list of registered providers for the service.
+
+## Retrieving all registrations for a resource
+You can also retrieve all registrations for a specific resource using the `getRegistrationsForResource` export:
+
+```lua
+local registeredProviders = exports.r3_servicesmanager:getRegistrationsForResource(resource)
+```
+
+Parameters:
+- resource: `string` The resource to get the registrations for.
+
+Returns:
+- `RegisteredProvider[]` A list of registered providers for the resource.
+
+## Getting all known services
+To retrieve all known services you can use the `getKnownServices` export:
+
+```lua
+local knownServices = exports.r3_servicesmanager:getKnownServices()
+```
+
+Returns:
+- `string[]` A list of services that are known by the services manager, meaning they have a provider registered currently or had at least one before.
+
+## Checking if there is a provider for a service
+To check if there is currently a provider registered for a service you can use the `isProvidedFor` export:
+
+```lua
+exports.r3_servicesmanager:isProvidedFor(service)
+```
+
+Parameters:
+- service: `string` The service to check if there is a provider registered for it.

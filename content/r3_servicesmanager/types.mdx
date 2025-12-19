@@ -1,0 +1,22 @@
+# Types
+The following types are used with the provided exports:
+
+## ServicePriority
+The priority of a service provider.
+
+Fields:
+- Lowest: 0
+- Low: 1
+- Normal: 2
+- High: 3
+- Highest: 4
+
+## RegisteredProvider
+A registration of a provider for a service.
+
+Methods:
+- getService(): `string` The service the provider provides.
+- getProvider(): `table` The provider object.
+- getPriority(): [`ServicePriority`](#servicepriority) The priority of the provider.
+- getResource(): `string` The resource the provider was registered for.
+- getInvokingResource(): `string` The resource that registered the provider.

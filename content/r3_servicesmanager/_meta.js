@@ -1,3 +1,7 @@
 export default {
-    index: "Overview"
+    index: "Overview",
+    installation: "Installation",
+    usage: "Usage",
+    events: "Events",
+    types: "Types",
 };
