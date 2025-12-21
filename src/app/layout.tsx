@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     // Define your metadata here
     // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
     title: {
-        template: "%s - r3ps4J Docs",
+        template: "%s | r3ps4J Docs",
         default: "r3ps4J Docs",
     },
 };
