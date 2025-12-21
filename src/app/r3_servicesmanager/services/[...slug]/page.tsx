@@ -18,6 +18,19 @@ const { mdxPages, pageMap: _pageMap } = convertToPageMap({
     basePath: "r3_servicesmanager/services",
 });
 
+type Props = {
+    params: Promise<{ slug: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(props: Props) {
+    const params = await props.params;
+    const service = services.find((service) => service.key == params.slug);
+    return {
+        title: service.label,
+    };
+}
+
 // `mergeMetaWithPageMap` is used to change sidebar order and title
 const eslintPageMap = mergeMetaWithPageMap(_pageMap[0]!, {
     services: {
