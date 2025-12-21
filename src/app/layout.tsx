@@ -6,10 +6,15 @@ import { childrenPageMap } from "./r3_servicesmanager/services/[...slug]/page";
 import "nextra-theme-docs/style.css";
 import { Folder, PageMapItem } from "nextra";
 import Image from "next/image";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
     // Define your metadata here
     // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+    title: {
+        template: "%s - r3ps4J Docs",
+        default: "r3ps4J Docs",
+    },
 };
 
 const pageMap = [...(await getPageMap())];
