@@ -9,7 +9,7 @@ import { services } from "../services";
 
 const user = "r3ps4J";
 const repo = "r3_servicesmanager";
-const branch = "v0.2.0";
+const branch = "v0.3.0";
 const docsPath = "api/";
 const filePaths: string[] = services.map((service) => service.key);
 
