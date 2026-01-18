@@ -18,7 +18,7 @@ Some features of the services manager:
 - Server owners can choose what to use! Since the providers are returned based on a priority, you can increase the priority of your preferred \<framework, progressbar, etc.\> and it will be used in every script utilising this. And you can also swap out resources (as long as they are compatible with this), for example if you want to switch the style of notifications in your server you can remove the old notification script and put in a new one which will then be used instead.
 
 ## What is supported?
-Pretty much anything can register itself under a service key, but to keep things clear I've defined some interfaces for common services (notifications, jobs, frameworks, etc.). These can all be found under [`services`](/r3_servicesmanager/services) folder of this repository. Type definitions in Lua and TypeScript can be found there as well. If you need an API for a service that is not defined, make an issue! I'll check if I can define it if it's commonly used.
+Pretty much anything can register itself under a service key, but to keep things clear I've defined some interfaces for common services (notifications, jobs, frameworks, etc.). These can all be found under [`services`](/r3_servicesmanager/services). Type definitions in Lua and TypeScript can be found there as well. If you need an API for a service that is not defined, make an issue! I'll check if I can define it if it's commonly used.
 
 There are some providers included with this resource for popular resources such as ESX, QBOX and ox_lib. These can be found in the [`providers`](https://github.com/r3ps4J/r3_servicesmanager/tree/master/providers) folder of the repository. If you need any other providers you are welcome to create an issue as well.
 
