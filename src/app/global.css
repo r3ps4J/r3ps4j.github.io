@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+.r3_servicesmanager {
+  --color-fd-primary: var(--r3_servicesmanager-color);
+}
+
+.headless {
+  --color-fd-primary: var(--headless-color);
+}
+
+.framework {
+  --color-fd-primary: var(--framework-color);
+}
+
+:root {
+  --r3_servicesmanager-color: hsl(217, 100%, 58%);
+  --headless-color: hsl(250, 80%, 54%);
+  --framework-color: hsl(41, 100%, 40%);
+}
+
+.dark {
+  --r3_servicesmanager-color: #a9ceff;
+  --headless-color: hsl(250 100% 80%);
+  --framework-color: #fff383;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+    margin-right: 0px !important;
+    --removed-body-scroll-bar-size: 0px !important;
+}

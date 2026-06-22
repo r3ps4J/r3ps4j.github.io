@@ -1,16 +1,15 @@
 import { Tag } from "lucide-react";
-import { Cards } from "nextra/components";
+import LinkButton from "./LinkButton";
 
 export default function ReleasesButton({ user, repo }: { user: string; repo: string }) {
     return (
-        <Cards.Card
-            icon={<Tag />}
-            title="Releases"
+        <LinkButton
             href={`https://github.com/${user}/${repo}/releases`}
-            arrow
-            // @ts-ignore
             target="_blank"
             rel="noopener noreferrer"
-        />
+        >
+            <Tag/>
+            Releases
+        </LinkButton>
     );
 }

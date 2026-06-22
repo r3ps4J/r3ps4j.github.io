@@ -1,0 +1,11 @@
+{
+  "title": "About",
+  "description": "General information",
+  "icon": "Info",
+  "root": true,
+  "pages": [
+    "index",
+    "support",
+    "ark"
+  ]
+}

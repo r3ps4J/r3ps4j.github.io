@@ -1,0 +1,24 @@
+---
+title: What is r3_servicesmanager?
+icon: CircleQuestionMark
+---
+
+r3_servicesmanager is a services manager for the CitizenFX platform. It keeps track of various providers, all registered for a specific service. Scripts can retrieve a registered provider, which implement a specific interface, and use it without knowing anything about the implementation of the provider itself. It is inspired by the popular Minecraft server plugin Vault.
+
+## Why r3_servicesmanager?
+If you've ever wanted to make a resource for FiveM and published it, you probably got the question to support \<insert any framework here\>. And if you've ever made a server and installed a lot of resources on it, you probably ran into "bridge"-like resources which handled the compatibility with frameworks.
+
+r3_servicesmanager provides a solution for this. It gives developers a way to support many different frameworks (and other scripts) without having to program support for each one. Resources can simply register themselves and, as long as they implement the defined interfaces, will be compatible with every script utilising r3_servicesmanager for its dependencies.
+
+Some features of the services manager:
+- You no longer need to create many if statements for every framework you want to be compatible with, just retrieve the provider and call the method you need.
+- No need to figure out which provider you need. The services manager always gives you the registered provider with the highest priority for which the required resource is started.
+- Any resource can make itself compatible, no need to update your script to add support. This also means that you don't need to update your resource when \<insert any resource\> has an update, the provider simply needs to be updated and it will be compatible again!
+- Server owners can choose what to use! Since the providers are returned based on a priority, you can increase the priority of your preferred \<framework, progressbar, etc.\> and it will be used in every script utilising this. And you can also swap out resources (as long as they are compatible with this), for example if you want to switch the style of notifications in your server you can remove the old notification script and put in a new one which will then be used instead.
+
+## What is supported?
+Pretty much anything can register itself under a service key, but to keep things clear I've defined some interfaces for common services (notifications, jobs, frameworks, etc.). These can all be found under [`services`](/r3_servicesmanager/services) folder of this repository. Type definitions in Lua and TypeScript can be found there as well. If you need an API for a service that is not defined, make an issue! I'll check if I can define it if it's commonly used.
+
+There are some providers included with this resource for popular resources such as ESX, QBOX and ox_lib. These can be found in the [`providers`](https://github.com/r3ps4J/r3_servicesmanager/tree/master/providers) folder of the repository. If you need any other providers you are welcome to create an issue as well.
+
+You can also define your own "service", and use it across your own resources. Just register it under a non-taken service key, preferably something that will never be taken i.e. including your username, and you can retrieve it in your resources.
