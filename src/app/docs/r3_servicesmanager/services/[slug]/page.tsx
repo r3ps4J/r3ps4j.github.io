@@ -1,5 +1,12 @@
 import { createCompiler } from "@fumadocs/mdx-remote";
-import { DocsBody, DocsPage, DocsTitle, MarkdownCopyButton, ViewOptionsPopover } from "@/layouts/docs/page";
+import {
+    DocsBody,
+    DocsPage,
+    DocsTitle,
+    MarkdownCopyButton,
+    PageLastUpdate,
+    ViewOptionsPopover,
+} from "@/layouts/docs/page";
 import { getMDXComponents } from "@/components/mdx";
 import { services } from "../services";
 import { notFound } from "next/navigation";
@@ -19,9 +26,9 @@ export default async function Page({ params }: PageProps<"/docs/r3_servicesmanag
         notFound();
     }
     const markdownUrl = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${docsPath}${service}/${service}.md`;
-    const response = await fetch(markdownUrl);
+    const markdownResponse = await fetch(markdownUrl);
     // Replace relative links to definition files
-    let content = (await response.text()).replaceAll(
+    let content = (await markdownResponse.text()).replaceAll(
         "(./definitions/",
         `(https://github.com/${user}/${repo}/blob/${branch}/${docsPath}${service}/definitions/`,
     );
@@ -32,6 +39,11 @@ export default async function Page({ params }: PageProps<"/docs/r3_servicesmanag
     const { toc, body: MdxContent } = await compiler.compile({
         source: content,
     });
+
+    const apiUrl = `https://api.github.com/repos/${user}/${repo}/commits?sha=${branch}&path=${encodeURIComponent(`${docsPath}${service}/${service}.md`)}&per_page=1`;
+    const apiResponse = await fetch(apiUrl);
+    const commits = await apiResponse.json();
+    const lastModified = commits[0]?.commit?.author?.date;
 
     return (
         <DocsPage toc={toc}>
@@ -45,6 +57,7 @@ export default async function Page({ params }: PageProps<"/docs/r3_servicesmanag
             </div>
             <DocsBody>
                 <MdxContent components={getMDXComponents()} />
+                {lastModified && <PageLastUpdate date={new Date(lastModified)} />}
             </DocsBody>
         </DocsPage>
     );
