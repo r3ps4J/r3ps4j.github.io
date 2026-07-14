@@ -258,8 +258,9 @@ export function SidebarItem({
 
   return (
     <Link ref={ref} data-active={active} prefetch={prefetch} {...props}>
-      {icon ?? (props.external ? <ExternalLink /> : null)}
+      {icon}
       {children}
+      {(props.external ? <ExternalLink className="ml-auto" /> : null)}
     </Link>
   );
 }
