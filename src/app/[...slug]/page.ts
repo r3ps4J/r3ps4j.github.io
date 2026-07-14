@@ -17,5 +17,5 @@ export default async function DocsRedirect({ params }: { params: Promise<{ slug?
 }
 
 export async function generateStaticParams() {
-    return source.generateParams();
+    return source.generateParams().filter(({ slug }) => slug.length > 0);
 }
