@@ -1,0 +1,19 @@
+{
+  "title": "r3_servicesmanager",
+  "description": "Framework-agnostic service manager",
+  "icon": "Blocks",
+  "root": true,
+  "pages": [
+    "---Introduction---",
+    "index",
+    "installation",
+    "external:[Github][Repository](https://github.com/r3ps4J/r3_servicesmanager)",
+    "external:[Tags][Releases](https://github.com/r3ps4J/r3_servicesmanager/releases)",
+    "---Usage---",
+    "getting-started",
+    "events",
+    "types",
+    "---Services---",
+    "...services"
+  ]
+}

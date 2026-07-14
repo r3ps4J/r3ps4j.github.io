@@ -1,0 +1,58 @@
+---
+title: Installation
+icon: Wrench
+---
+
+import { File, Folder, Files } from "fumadocs-ui/components/files";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { Download } from "lucide-react";
+
+This guide will help you install the latest version of r3_servicesmanager.
+
+<Steps>
+<Step>
+
+### Download the [latest release](https://github.com/r3ps4J/r3_servicesmanager/releases) of r3_servicesmanager
+
+Make sure to download `r3_servicesmanager.zip` and open it, then proceed to copy the `r3_servicesmanager` folder to your server's `resources` folder so that the folder layout looks like the following.
+
+<Files>
+    <Folder name="Server files" defaultOpen>
+        <Folder name="resources" defaultOpen>
+            <Folder name="r3_servicesmanager" defaultOpen={false} />
+        </Folder>
+        <File name="server.cfg" />
+    </Folder>
+</Files>
+
+<Callout title="Resource organisation" type="idea">
+    If you want to keep your resources folder organised, you can also place r3_servicesmanager in any subfolder of the
+    resources folder as long as the folder name is surrounded by `[square brackets]`.
+</Callout>
+
+</Step>
+<Step>
+
+### Edit your server configuration
+
+1. Open your [server configuration file](https://docs.fivem.net/docs/server-manual/setting-up-a-server-vanilla/#servercfg) (usually called `server.cfg`)
+
+2. Add `start r3_servicesmanager` to the resource list below your framework's core resource (es_extended, qbx_core, etc.).
+
+```ini title="server.cfg"
+start r3_servicesmanager
+```
+
+<Callout title="Start order" type="warn">
+    Make sure to place this before any scripts that make use of the services manager. It is recommended to start it as
+    one of the first scripts in your startup, as it will register the included providers as soon as their resources
+    start.
+</Callout>
+
+<Callout title="Other resources" type="info">
+    Ideally, any resource that registers providers within the services manager should start before all the resources
+    that retrieve providers.
+</Callout>
+
+</Step>
+</Steps>
