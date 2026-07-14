@@ -1,5 +1,5 @@
 import { source } from "@/lib/source";
-import { DocsLayout } from "fumadocs-ui/layouts/docs";
+import { DocsLayout } from "@/layouts/docs";
 import { baseOptions } from "@/lib/layout.shared";
 import { getSection } from "@/lib/navigation";
 import { CSSProperties } from "react";

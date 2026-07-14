@@ -1,5 +1,5 @@
 import { createCompiler } from "@fumadocs/mdx-remote";
-import { DocsBody, DocsPage, DocsTitle, MarkdownCopyButton, ViewOptionsPopover } from "fumadocs-ui/layouts/docs/page";
+import { DocsBody, DocsPage, DocsTitle, MarkdownCopyButton, ViewOptionsPopover } from "@/layouts/docs/page";
 import { getMDXComponents } from "@/components/mdx";
 import { services } from "../services";
 import { notFound } from "next/navigation";
