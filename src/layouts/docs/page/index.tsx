@@ -193,7 +193,7 @@ export function PageLastUpdate({ date: value, ...props }: Omit<ComponentProps<"p
     }, [value]);
 
     return (
-        <p {...props} className={cn("text-sm text-fd-muted-foreground", props.className)}>
+        <p {...props} className={cn("text-sm text-fd-muted-foreground float-right", props.className)}>
             {t("Last updated on")} {date}
         </p>
     );
